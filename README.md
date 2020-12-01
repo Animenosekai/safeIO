@@ -156,7 +156,7 @@ pip install safeIO --upgrade
 
 >   
 
-**Warning: Make sure to close the file correctly after using the file**
+**Warning: Make sure to close the file correctly after using the file with detach**
 
 ---  
 
@@ -252,7 +252,7 @@ pip install safeIO --upgrade
 
 > Tips: Make sure to include the "b" access mode in the mode\n  
 
-**Warning: Make sure to close the file correctly after using the file**
+**Warning: Make sure to close the file correctly after using the file with detach**
 
 ---  
 
@@ -320,6 +320,6 @@ pip install safeIO --upgrade
 
 > Returns the opened IO (TextIOWrapper)  
 
-**Warning: Make sure to close the file correctly after using the file**
+**Warning: Make sure to close the file correctly after using the file with detach**
 
 Markdown File | 325 lines
