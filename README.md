@@ -9,7 +9,6 @@
 3. [What is it?](#what-is-it)
 4. [Installation](#installation)
 5. [Objects](#objects)
-    
     - [TextFile()](#textfile)
         - [isfile](#isfile)
         - [delete](#delete)
@@ -323,8 +322,4 @@ pip install safeIO --upgrade
 
 **Warning: Make sure to close the file correctly after using the file**
 
-
-
-
-
-Markdown File | 330 lines
+Markdown File | 325 lines
