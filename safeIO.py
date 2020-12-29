@@ -1008,7 +1008,7 @@ class JSONFile():
         self.encoding = str(encoding)
         self.blocking = (True if str(blocking).lower().replace(" ", "") in ["true", "yes"] else False)
         self.ensure_ascii = (True if str(ensure_ascii).lower().replace(" ", "") in ["true", "yes"] else False)
-        self.indent = int(indent)
+        self.indent = (int(indent) if indent is not None else None)
         self.separators = separators
         self._currentOperation = 1
         self._queueLength = 0
@@ -1294,7 +1294,7 @@ class JSONFile():
                 readingFile.seek(int(position))
                 data = readingFile.read()
                 if data.replace(" ", "") != "":
-                    data = loads(readingFile.read())
+                    data = loads(data)
                 else:
                     data = {}
             self._currentOperation += 1
