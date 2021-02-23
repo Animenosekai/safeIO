@@ -165,9 +165,7 @@ class TextFile():
         if self.blocking:
             return _isfile()
         else:
-            newThread = Thread(target=_isfile, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_isfile, args=[callback], daemon=True).start()
 
     def delete(self, callback=None):
         """
@@ -189,9 +187,7 @@ class TextFile():
         if self.blocking:
             return _delete()
         else:
-            newThread = Thread(target=_delete, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_delete, args=[callback], daemon=True).start()
 
     def rename(self, newName, overwrite=False, callback=None):
         """
@@ -223,9 +219,7 @@ class TextFile():
         if self.blocking:
             return _rename(newName)
         else:
-            newThread = Thread(target=_rename, args=[newName, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_rename, args=[newName, callback], daemon=True).start()
 
     def move(self, newPath, overwrite=False, callback=None):
         """
@@ -254,9 +248,7 @@ class TextFile():
         if self.blocking:
             return _move(newPath, overwrite)
         else:
-            newThread = Thread(target=_move, args=[newPath, overwrite, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_move, args=[newPath, overwrite, callback], daemon=True).start()
 
     def name(self, callback=None):
         """
@@ -282,9 +274,7 @@ class TextFile():
         if self.blocking:
             return _name()
         else:
-            newThread = Thread(target=_name, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_name, args=[callback], daemon=True).start()
             
     def fileno(self, callback=None):
         """
@@ -307,11 +297,7 @@ class TextFile():
         if self.blocking:
             return _fileno()
         else:
-            newThread = Thread(target=_fileno, args=[callback])
-            newThread.daemon = True
-            newThread.start()
-
-
+            Thread(target=_fileno, args=[callback], daemon=True).start()
 
     def read(self, position=0, callback=None):
         """
@@ -337,9 +323,7 @@ class TextFile():
         if self.blocking:
             return _read(position)
         else:
-            newThread = Thread(target=_read, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_read, args=[position, callback], daemon=True).start()
 
     def write(self, data, position=0, callback=None):
         """
@@ -363,9 +347,7 @@ class TextFile():
         if self.blocking:
             return _write(data, position)
         else:
-            newThread = Thread(target=_write, args=[data, position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_write, args=[data, position, callback], daemon=True).start()
 
 
     def append(self, data, callback=None):
@@ -389,9 +371,7 @@ class TextFile():
         if self.blocking:
             return _append(data)
         else:
-            newThread = Thread(target=_append, args=[data, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_append, args=[data, callback], daemon=True).start()
 
     def readline(self, position=0, callback=None):
         """
@@ -415,9 +395,7 @@ class TextFile():
         if self.blocking:
             return _readline(position)
         else:
-            newThread = Thread(target=_readline, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_readline, args=[position, callback], daemon=True).start()
 
     def readlines(self, position=0, callback=None):
         """
@@ -441,9 +419,7 @@ class TextFile():
         if self.blocking:
             return _readlines(position)
         else:
-            newThread = Thread(target=_readlines, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_readlines, args=[position, callback], daemon=True).start()
 
     def writelines(self, data, position=0, callback=None):
         """
@@ -467,9 +443,7 @@ class TextFile():
         if self.blocking:
             return _writelines(data, position)
         else:
-            newThread = Thread(target=_writelines, args=[data, position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_writelines, args=[data, position, callback], daemon=True).start()
 
     def appendlines(self, data, callback=None):
         """
@@ -492,9 +466,7 @@ class TextFile():
         if self.blocking:
             return _appendlines(data)
         else:
-            newThread = Thread(target=_appendlines, args=[data, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_appendlines, args=[data, callback], daemon=True).start()
 
     def detach(self, mode="r", callback=None):
         """
@@ -518,9 +490,7 @@ class TextFile():
         if self.blocking:
             return _detach(mode)
         else:
-            newThread = Thread(target=_detach, args=[mode, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_detach, args=[mode, callback], daemon=True).start()
 
 class BinaryFile():
     """
@@ -647,9 +617,7 @@ class BinaryFile():
         if self.blocking:
             return _isfile()
         else:
-            newThread = Thread(target=_isfile, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_isfile, args=[callback], daemon=True).start()
 
     def delete(self, callback=None):
         """
@@ -671,9 +639,7 @@ class BinaryFile():
         if self.blocking:
             return _delete()
         else:
-            newThread = Thread(target=_delete, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_delete, args=[callback], daemon=True).start()
 
     def rename(self, newName, overwrite=False, callback=None):
         """
@@ -705,9 +671,7 @@ class BinaryFile():
         if self.blocking:
             return _rename(newName)
         else:
-            newThread = Thread(target=_rename, args=[newName, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_rename, args=[newName, callback], daemon=True).start()
 
     def move(self, newPath, overwrite=False, callback=None):
         """
@@ -736,9 +700,7 @@ class BinaryFile():
         if self.blocking:
             return _move(newPath, overwrite)
         else:
-            newThread = Thread(target=_move, args=[newPath, overwrite, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_move, args=[newPath, overwrite, callback], daemon=True).start()
 
     def name(self, callback=None):
         """
@@ -764,9 +726,7 @@ class BinaryFile():
         if self.blocking:
             return _name()
         else:
-            newThread = Thread(target=_name, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_name, args=[callback], daemon=True).start()
 
     def fileno(self, callback=None):
         """
@@ -789,9 +749,7 @@ class BinaryFile():
         if self.blocking:
             return _fileno()
         else:
-            newThread = Thread(target=_fileno, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_fileno, args=[callback], daemon=True).start()
 
     def read(self, position=0, callback=None):
         """
@@ -817,9 +775,7 @@ class BinaryFile():
         if self.blocking:
             return _read(position)
         else:
-            newThread = Thread(target=_read, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_read, args=[position, callback], daemon=True).start()
 
     def write(self, data, position=0, callback=None):
         """
@@ -843,10 +799,7 @@ class BinaryFile():
         if self.blocking:
             return _write(data, position)
         else:
-            newThread = Thread(target=_write, args=[data, position, callback])
-            newThread.daemon = True
-            newThread.start()
-
+            Thread(target=_write, args=[data, position, callback], daemon=True).start()
 
     def append(self, data, callback=None):
         """
@@ -869,9 +822,7 @@ class BinaryFile():
         if self.blocking:
             return _append(data)
         else:
-            newThread = Thread(target=_append, args=[data, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_append, args=[data, callback], daemon=True).start()
 
     def readline(self, position=0, callback=None):
         """
@@ -895,9 +846,7 @@ class BinaryFile():
         if self.blocking:
             return _readline(position)
         else:
-            newThread = Thread(target=_readline, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_readline, args=[position, callback], daemon=True).start()
 
     def readlines(self, position=0, callback=None):
         """
@@ -921,9 +870,7 @@ class BinaryFile():
         if self.blocking:
             return _readlines(position)
         else:
-            newThread = Thread(target=_readlines, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_readlines, args=[position, callback], daemon=True).start()
 
 
     def writelines(self, data, position=0, callback=None):
@@ -948,9 +895,7 @@ class BinaryFile():
         if self.blocking:
             return _writelines(data, position)
         else:
-            newThread = Thread(target=_writelines, args=[data, position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_writelines, args=[data, position, callback], daemon=True).start()
 
     def appendlines(self, data, callback=None):
         """
@@ -973,9 +918,7 @@ class BinaryFile():
         if self.blocking:
             return _appendlines(data)
         else:
-            newThread = Thread(target=_appendlines, args=[data, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_appendlines, args=[data, callback], daemon=True).start()
 
     def detach(self, mode="rb", callback=None):
         """
@@ -1000,10 +943,7 @@ class BinaryFile():
         if self.blocking:
             return _detach(mode)
         else:
-            newThread = Thread(target=_detach, args=[mode, callback])
-            newThread.daemon = True
-            newThread.start()
-    
+            Thread(target=_detach, args=[mode, callback], daemon=True).start()
 
 class JSONFile():
     """
@@ -1145,9 +1085,7 @@ class JSONFile():
         if self.blocking:
             return _isfile()
         else:
-            newThread = Thread(target=_isfile, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_isfile, args=[callback], daemon=True).start()
 
     def delete(self, callback=None):
         """
@@ -1169,9 +1107,7 @@ class JSONFile():
         if self.blocking:
             return _delete()
         else:
-            newThread = Thread(target=_delete, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_delete, args=[callback], daemon=True).start()
 
     def rename(self, newName, overwrite=False, callback=None):
         """
@@ -1203,9 +1139,7 @@ class JSONFile():
         if self.blocking:
             return _rename(newName)
         else:
-            newThread = Thread(target=_rename, args=[newName, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_rename, args=[newName, callback], daemon=True).start()
 
     def move(self, newPath, overwrite=False, callback=None):
         """
@@ -1234,9 +1168,7 @@ class JSONFile():
         if self.blocking:
             return _move(newPath, overwrite)
         else:
-            newThread = Thread(target=_move, args=[newPath, overwrite, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_move, args=[newPath, overwrite, callback], daemon=True).start()
 
     def name(self, callback=None):
         """
@@ -1262,9 +1194,7 @@ class JSONFile():
         if self.blocking:
             return _name()
         else:
-            newThread = Thread(target=_name, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_name, args=[callback], daemon=True).start()
             
 
     def fileno(self, callback=None):
@@ -1288,9 +1218,7 @@ class JSONFile():
         if self.blocking:
             return _fileno()
         else:
-            newThread = Thread(target=_fileno, args=[callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_fileno, args=[callback], daemon=True).start()
 
     def read(self, position=0, callback=None):
         """
@@ -1320,9 +1248,7 @@ class JSONFile():
         if self.blocking:
             return _read(position)
         else:
-            newThread = Thread(target=_read, args=[position, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_read, args=[position, callback], daemon=True).start()
 
     def write(self, data, position=0, callback=None):
         """
@@ -1346,10 +1272,7 @@ class JSONFile():
         if self.blocking:
             return _write(data, position)
         else:
-            newThread = Thread(target=_write, args=[data, position, callback])
-            newThread.daemon = True
-            newThread.start()
-
+            Thread(target=_write, args=[data, position, callback], daemon=True).start()
 
     def append(self, data, callback=None):
         """
@@ -1372,9 +1295,7 @@ class JSONFile():
         if self.blocking:
             return _append(data)
         else:
-            newThread = Thread(target=_append, args=[data, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_append, args=[data, callback], daemon=True).start()
 
     def detach(self, mode="r", callback=None):
         """
@@ -1398,6 +1319,4 @@ class JSONFile():
         if self.blocking:
             return _detach(mode)
         else:
-            newThread = Thread(target=_detach, args=[mode, callback])
-            newThread.daemon = True
-            newThread.start()
+            Thread(target=_detach, args=[mode, callback], daemon=True).start()
