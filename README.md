@@ -10,46 +10,9 @@
 4. [Installation](#installation)
 5. [Objects](#objects)
     - [TextFile()](#textfile)
-        - [isfile](#isfile)
-        - [delete](#delete)
-        - [rename](#rename)
-        - [move](#move)
-        - [name](#name)
-        - [fileno](#fileno)
-        - [read](#read)
-        - [write](#write)
-        - [append](#append)
-        - [readline](#readline)
-        - [readlines](#readlines)
-        - [writelines](#writelines)
-        - [appendlines](#appendlines)
-        - [detach](#detach)
     - [BinaryFile()](#binaryfile)
-        - [isfile](#isfile-1)
-        - [delete](#delete-1)
-        - [rename](#rename-1)
-        - [move](#move-1)
-        - [name](#name-1)
-        - [fileno](#fileno-1)
-        - [read](#read-1)
-        - [write](#write-1)
-        - [append](#append-1)
-        - [readline](#readline-1)
-        - [readlines](#readlines-1)
-        - [writelines](#writelines-1)
-        - [appendlines](#appendlines-1)
-        - [detach](#detach-1)
     - [JSONFile()](#jsonfile)
-        - [isfile](#isfile-1-2)
-        - [delete](#delete-1-2)
-        - [rename](#rename-1-2)
-        - [move](#move-1-2)
-        - [name](#name-1-2)
-        - [fileno](#fileno-1-2)
-        - [read](#read-1-2)
-        - [write](#write-1-2)
-        - [append](#append-1-2)
-        - [detach](#detach-1-2)
+6. [Tips](#tips)
 
 
 # What is it?
@@ -65,7 +28,7 @@ pip install safeIO --upgrade
 
 
 # Objects
-## TextFile()  
+## TextFile(filepath, encoding="utf-8", blocking=True)  
 
 > A Text File object  
 
@@ -160,7 +123,7 @@ pip install safeIO --upgrade
 
 ---  
 
-## BinaryFile()  
+## BinaryFile(filepath, blocking=True)  
 
 > A Binary File object  
 
@@ -256,7 +219,7 @@ pip install safeIO --upgrade
 
 ---  
 
-## JSONFile()  
+## JSONFile(filepath, ensure_ascii=False, minify=False, indent=4, separators=(', ', ': '), encoding="utf-8", blocking=True)  
 
 > A JSON File object  
 
@@ -322,4 +285,34 @@ pip install safeIO --upgrade
 
 **Warning: Make sure to close the file correctly after using the file with detach**
 
-Markdown File | 325 lines
+
+
+# Tips
+- You can temporarily make the operations blocking with the "with" statement like so:
+
+```python
+from safeIO import TextFile
+
+f = TextFile("example.txt", blocking=False)
+print(f.read()) # prints "None"
+with f:
+    print(f.read()) # prints the content of example.txt
+with f as reading_file:
+    print(reading_file.read()) # prints the content of example.txt
+```
+
+- Try to define the safeIO object at the top of your script and use the same object for all of the operations to the file with:
+
+```python
+from safeIO import JSONFile
+data_file = JSONFile("data.json", minify=True, blocking=False)
+
+# do a bunch of stuff
+data_file.write({"type": "new_data"})
+
+# do more stuff
+with data_file as data:
+    new = data.read()
+new["type"] = "new!"
+data_file.write(new)
+```
