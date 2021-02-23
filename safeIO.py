@@ -39,7 +39,8 @@ class TextFile():
     def __init__(self, filepath, encoding="utf-8", blocking=True) -> None:
         self.filepath = str(filepath)
         self.encoding = str(encoding)
-        self.blocking = blocking
+        self.blocking = (True if str(blocking).lower().replace(" ", "") in ["true", "yes", "1"] else False)
+        self._blocking = blocking
         self._currentOperation = 1
         self._queueLength = 0
         self._Lock = Lock()
@@ -131,13 +132,15 @@ class TextFile():
         """
         'with' statement handling
         """
+        self._blocking = self.blocking
+        self.blocking = True
         return self
 
     def __exit__(self, type, value, traceback):
         """
         Exit of 'with' statement (deleting the file)
         """
-        self.delete()
+        self.blocking = self._blocking
 
     def isfile(self, callback=None):
         """
@@ -525,7 +528,8 @@ class BinaryFile():
     """
     def __init__(self, filepath, blocking=True) -> None:
         self.filepath = str(filepath)
-        self.blocking = blocking
+        self.blocking = (True if str(blocking).lower().replace(" ", "") in ["true", "yes", "1"] else False)
+        self._blocking = self.blocking
         self._currentOperation = 1
         self._queueLength = 0
         self._Lock = Lock()
@@ -610,13 +614,15 @@ class BinaryFile():
         """
         'with' statement handling
         """
+        self._blocking = self.blocking
+        self.blocking = True
         return self
 
     def __exit__(self, type, value, traceback):
         """
         Exit of 'with' statement (deleting the file)
         """
-        self.delete()
+        self.blocking = self._blocking
 
     def isfile(self, callback=None):
         """
@@ -1003,13 +1009,18 @@ class JSONFile():
     """
     A JSON File object
     """
-    def __init__(self, filepath, ensure_ascii=False, indent=4, separators=(', ', ': '), encoding="utf-8", blocking=True) -> None:
+    def __init__(self, filepath, ensure_ascii=False, minify=False, indent=4, separators=(', ', ': '), encoding="utf-8", blocking=True) -> None:
         self.filepath = str(filepath)
         self.encoding = str(encoding)
-        self.blocking = (True if str(blocking).lower().replace(" ", "") in ["true", "yes"] else False)
-        self.ensure_ascii = (True if str(ensure_ascii).lower().replace(" ", "") in ["true", "yes"] else False)
-        self.indent = (int(indent) if indent is not None else None)
-        self.separators = separators
+        self.blocking = (True if str(blocking).lower().replace(" ", "") in ["true", "yes", "1"] else False)
+        self._blocking = self.blocking
+        self.ensure_ascii = (True if str(ensure_ascii).lower().replace(" ", "") in ["true", "yes", "1"] else False)
+        if (True if str(minify).lower().replace(" ", "") in ["true", "yes", "1"] else False):
+            self.indent = None
+            self.separators = (',', ':')
+        else:
+            self.indent = (int(indent) if indent is not None else None)
+            self.separators = separators
         self._currentOperation = 1
         self._queueLength = 0
         self._Lock = Lock()
@@ -1101,13 +1112,15 @@ class JSONFile():
         """
         'with' statement handling
         """
+        self._blocking = self.blocking
+        self.blocking = True
         return self
 
     def __exit__(self, type, value, traceback):
         """
         Exit of 'with' statement (deleting the file)
         """
-        self.delete()
+        self.blocking = self._blocking
 
     def isfile(self, callback=None):
         """
